@@ -1,0 +1,12 @@
+--> Simple Interest - ✔
+--> Compound Interest
+--> GST Calculator - ✔
+        Taxable Amount
+        CGST
+        SGST
+        GST Rate
+        Final Amount
+
+--> EMI Calculator
+--> Income Tax
+--> Margin/Profit
