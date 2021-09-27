@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
-#include <windows.h>
+#include <stdio.h>
 
 using namespace std;
 /*GST START*/
@@ -18,25 +18,23 @@ private:
     int choice;
 
 public:
-    void getData();
-    void calculateData();
-    void printData();
+    void getGST();
+    void showGST();
 };
 
 //-------------GST FUNCTIONS----------------
-void GST::getData()
+void GST::getGST()
 {
-    system("cls");
+    system("clear");
     printf(
         "  ____ ____ _____ \t  ____      _            _       _\n"
         " / ___/ ___|_   _|\t / ___|__ _| | ___ _   _| | __ _| |_ ___  _ __\n"
         "| |  _\\___ \\ | |  \t| |   / _` | |/ __| | | | |/ _` | __/ _ \\| '__|\n"
         "| |_| |___) || |  \t| |__| (_| | | (__| |_| | | (_| | || (_) | |\n"
-        " \\____|____/ |_|  \t \\____\\__,_|_|\\___|\\__,_|_|\\__,_|\\__\\___/|_|\n\n\n"
-    );
+        " \\____|____/ |_|  \t \\____\\__,_|_|\\___|\\__,_|_|\\__,_|\\__\\___/|_|\n\n\n");
     cout << "Enter the Taxable Amount of the Product: ";
     cin >> taxableAmt;
-    cout << "Enter the Rate of GST Applicable: \n1. 5%\n2. 12%\n3. 18%\n4. 28%\n";
+    cout << "Enter the Rate of GST Applicable: \n1. 5%\n2. 12%\n3. 18%\n4. 28%\n\nEnter your choice: ";
     cin >> choice;
     switch (choice)
     {
@@ -54,32 +52,28 @@ void GST::getData()
         break;
 
     default:
-        cout << "Enter a Valid Choice......";
-        break;
+        cout << "Enter a Valid Choice......\n\n";
+        exit(0);
     }
-}
 
-void GST::calculateData()
-{
     GSTAmt = (taxableAmt * GSTRate) / 100;
     CGST = SGST = GSTAmt / 2;
     finalAmt = taxableAmt + GSTAmt;
 }
 
-void GST::printData()
+void GST::showGST()
 {
-    system("cls");
+    system("clear");
     printf(
         "  ____ ____ _____ \t  ____      _            _       _\n"
         " / ___/ ___|_   _|\t / ___|__ _| | ___ _   _| | __ _| |_ ___  _ __\n"
         "| |  _\\___ \\ | |  \t| |   / _` | |/ __| | | | |/ _` | __/ _ \\| '__|\n"
         "| |_| |___) || |  \t| |__| (_| | | (__| |_| | | (_| | || (_) | |\n"
-        " \\____|____/ |_|  \t \\____\\__,_|_|\\___|\\__,_|_|\\__,_|\\__\\___/|_|\n\n\n"
-    );
+        " \\____|____/ |_|  \t \\____\\__,_|_|\\___|\\__,_|_|\\__,_|\\__\\___/|_|\n\n\n");
     cout << "=========================================================\n";
     cout << "\t\tGST Bifurcation";
     cout << "\n=========================================================\n";
-    cout << "Taxable Amount:\tRs." << taxableAmt << "\t\tRate of GST: " << GSTRate << endl;
+    cout << "Taxable Amount:\tRs." << taxableAmt << "\t\tRate of GST: " << GSTRate << "%" << endl;
     cout << "=========================================================\n";
     cout << "CGST:\t\tRs." << CGST << endl;
     cout << "SGST:\t\tRs." << SGST << endl;
@@ -98,43 +92,55 @@ private:
     int principal;
     int time;
     float rateOfInterest;
-    float SI;
+    float SITax;
     float Amt;
 
 public:
-    void getData();
-    void calculateData();
-    void printData();
+    void getSI();
+    void showSI();
 };
 
 // ----------------SIMPLE INTEREST FUNCTIONS------------
 
-void SI::getData()
+void SI::getSI()
 {
-    system("cls");
+    system("clear");
+
+    printf(
+        " ____  _                 _       \t ___       _                     _\n"
+        "/ ___|(_)_ __ ___  _ __ | | ___  \t|_ _|_ __ | |_ ___ _ __ ___  ___| |_\n"
+        "\\___ \\| | '_ ` _ \\| '_ \\| |/ _ \\ \t | || '_ \\| __/ _ \\ '__/ _ \\/ __| __|\n"
+        " ___) | | | | | | | |_) | |  __/ \t | || | | | ||  __/ | |  __/\\__ \\ |_\n"
+        "|____/|_|_| |_| |_| .__/|_|\\___| \t|___|_| |_|\\__\\___|_|  \\___||___/\\__|\n"
+        "                  |_|\n\n\n");
     cout << "Enter Principal Value: ";
     cin >> principal;
     cout << "Enter Time Period In Years: ";
     cin >> time;
     cout << "Enter Rate of Interest: ";
     cin >> rateOfInterest;
+
+    SITax = (principal * rateOfInterest * time) / 100;
+    Amt = principal + SITax;
 }
 
-void SI::calculateData()
+void SI::showSI()
 {
-    SI = (principal * rateOfInterest * time) / 100;
-    Amt = principal + SI;
-}
+    system("clear");
 
-void SI::printData()
-{
-    system("cls");
+    printf(
+        " ____  _                 _       \t ___       _                     _\n"
+        "/ ___|(_)_ __ ___  _ __ | | ___  \t|_ _|_ __ | |_ ___ _ __ ___  ___| |_\n"
+        "\\___ \\| | '_ ` _ \\| '_ \\| |/ _ \\ \t | || '_ \\| __/ _ \\ '__/ _ \\/ __| __|\n"
+        " ___) | | | | | | | |_) | |  __/ \t | || | | | ||  __/ | |  __/\\__ \\ |_\n"
+        "|____/|_|_| |_| |_| .__/|_|\\___| \t|___|_| |_|\\__\\___|_|  \\___||___/\\__|\n"
+        "                  |_|\n\n\n");
 
     cout << "==================================\n";
     cout << "Principal:\t\tRs." << principal << "\nTime Period:\t\t" << time << " yrs"
          << "\nRate Of Interest:\t" << rateOfInterest << "%" << endl;
     cout << "==================================\n";
-    cout << "Simple Interest:\tRs." << SI;
+    cout << "Simple Interest:\tRs." << SITax;
     cout << "\n==================================\n";
     cout << "Total Amount:\t\tRs." << Amt << endl;
     cout << "==================================\n";
@@ -149,41 +155,53 @@ private:
     int principal;
     int time;
     float rateOfInterest;
-    float CI;
+    float CITax;
     float Amt;
 
 public:
-    void getData();
-    void calculateData();
-    void printData();
+    void getCI();
+    void showCI();
 };
 
 // ----------------COMPOUND INTEREST FUNCTIONS------------
-void CI::getData()
+void CI::getCI()
 {
-    system("cls");
+    system("clear");
+
+    printf(
+        "  ____                                            _\t ___       _                     _\n"
+        " / ___|___  _ __ ___  _ __   ___  _   _ _ __   __| |\t|_ _|_ __ | |_ ___ _ __ ___  ___| |_\n"
+        "| |   / _ \\| '_ ` _ \\| '_ \\ / _ \\| | | | '_ \\ / _` |\t | || '_ \\| __/ _ \\ '__/ _ \\/ __| __|\n"
+        "| |__| (_) | | | | | | |_) | (_) | |_| | | | | (_| |\t | || | | | ||  __/ | |  __/\\__ \\ |_\n"
+        " \\____\\___/|_| |_| |_| .__/ \\___/ \\__,_|_| |_|\\__,_|\t|___|_| |_|\\__\\___|_|  \\___||___/\\__|\n"
+        "                     |_|\n\n\n");
     cout << "Enter Principal Value: ";
     cin >> principal;
     cout << "Enter Time Period: ";
     cin >> time;
     cout << "Enter Rate of Interest: ";
     cin >> rateOfInterest;
-}
 
-void CI::calculateData()
-{
     Amt = principal * (pow((1 + rateOfInterest / 100), time));
-    CI = Amt - principal;
+    CITax = Amt - principal;
 }
 
-void CI::printData()
+void CI::showCI()
 {
-    system("cls");
+    system("clear");
+
+    printf(
+        "  ____                                            _\t ___       _                     _\n"
+        " / ___|___  _ __ ___  _ __   ___  _   _ _ __   __| |\t|_ _|_ __ | |_ ___ _ __ ___  ___| |_\n"
+        "| |   / _ \\| '_ ` _ \\| '_ \\ / _ \\| | | | '_ \\ / _` |\t | || '_ \\| __/ _ \\ '__/ _ \\/ __| __|\n"
+        "| |__| (_) | | | | | | |_) | (_) | |_| | | | | (_| |\t | || | | | ||  __/ | |  __/\\__ \\ |_\n"
+        " \\____\\___/|_| |_| |_| .__/ \\___/ \\__,_|_| |_|\\__,_|\t|___|_| |_|\\__\\___|_|  \\___||___/\\__|\n"
+        "                     |_|\n\n\n");
     cout << "==================================\n";
     cout << "Principal:\t\tRs." << principal << "\nTime Period:\t\t" << time << " yrs"
-    << "\nRate Of Interest:\t" << rateOfInterest << "%" << endl;
+         << "\nRate Of Interest:\t" << rateOfInterest << "%" << endl;
     cout << "==================================\n";
-    cout << "Compound Interest:\tRs." << CI;
+    cout << "Compound Interest:\tRs." << CITax;
     cout << "\n==================================\n";
     cout << "Total Amount:\t\tRs." << Amt << endl;
     cout << "==================================\n";
@@ -198,43 +216,53 @@ private:
     float principalAmt;
     float rateOfInterest;
     float timePeriod;
-    float EMI;
+    float EMIAmt;
 
 public:
-    void getData();
-    void calculateData();
-    void printData();
+    void getEMI();
+    void showEMI();
 };
 
 //---------------EMI Functions--------------
 
-void EMI::getData()
+void EMI::getEMI()
 {
-    system("cls");
+    system("clear");
+
+    printf(
+        " _____ __  __ ___ \t  ____      _            _       _\n"
+        "| ____|  \\/  |_ _|\t / ___|__ _| | ___ _   _| | __ _| |_ ___  _ __\n"
+        "|  _| | |\\/| || | \t| |   / _` | |/ __| | | | |/ _` | __/ _ \\| '__|\n"
+        "| |___| |  | || | \t| |__| (_| | | (__| |_| | | (_| | || (_) | |\n"
+        "|_____|_|  |_|___|\t \\____\\__,_|_|\\___|\\__,_|_|\\__,_|\\__\\___/|_|\n\n\n");
     cout << "Enter the Loan Amount: ";
     cin >> principalAmt;
     cout << "Enter the time period of the loan (in years): ";
     cin >> timePeriod;
     cout << "Enter the Rate of Interest (per anum): ";
     cin >> rateOfInterest;
-}
 
-void EMI::calculateData()
-{
     float rate = rateOfInterest / (12 * 100);
     float time = timePeriod * 12;
-    EMI = (principalAmt * rate * pow(1 + rate, time)) / (pow(1 + rate, time) - 1);
+    EMIAmt = (principalAmt * rate * pow(1 + rate, time)) / (pow(1 + rate, time) - 1);
 }
 
-void EMI::printData()
+void EMI::showEMI()
 {
-    system("cls");
+    system("clear");
+
+    printf(
+        " _____ __  __ ___ \t  ____      _            _       _\n"
+        "| ____|  \\/  |_ _|\t / ___|__ _| | ___ _   _| | __ _| |_ ___  _ __\n"
+        "|  _| | |\\/| || | \t| |   / _` | |/ __| | | | |/ _` | __/ _ \\| '__|\n"
+        "| |___| |  | || | \t| |__| (_| | | (__| |_| | | (_| | || (_) | |\n"
+        "|_____|_|  |_|___|\t \\____\\__,_|_|\\___|\\__,_|_|\\__,_|\\__\\___/|_|\n\n\n");
     cout << "==========================================\n";
     cout << "Loan Amount:\t\tRs." << principalAmt << endl;
     cout << "Rate Of Interest:\t" << rateOfInterest << "%" << endl;
     cout << "Time Period:\t\t" << timePeriod << " yrs" << endl;
     cout << "==========================================\n";
-    cout << "Your Monthly EMI is:\tRs." << EMI << endl;
+    cout << "Your Monthly EMI is:\tRs." << EMIAmt << endl;
     cout << "==========================================\n";
 }
 /*EMI END*/
@@ -255,18 +283,25 @@ private:
     int temp;
 
 public:
-    void Calculate();
+    void getiTax();
     void zeroToSixty();
     void sixtyToEighty();
     void eightyAndAbove();
-    //void printData();
+    void showiTax();
 };
 
 //---------------INCOME TAX FUNCTIONS--------------
 
-void iTax::Calculate()
+void iTax::getiTax()
 {
-    system("cls");
+    system("clear");
+
+    printf(
+        " ___                                  _____          \t  ____      _            _       _\n"
+        "|_ _|_ __   ___ ___  _ __ ___   ___  |_   _|_ ___  __\t / ___|__ _| | ___ _   _| | __ _| |_ ___  _ __\n"
+        " | || '_ \\ / __/ _ \\| '_ ` _ \\ / _ \\   | |/ _` \\ \\/ /\t| |   / _` | |/ __| | | | |/ _` | __/ _ \\| '__|\n"
+        " | || | | | (_| (_) | | | | | |  __/   | | (_| |>  < \t| |__| (_| | | (__| |_| | | (_| | || (_) | |\n"
+        "|___|_| |_|\\___\\___/|_| |_| |_|\\___|   |_|\\__,_/_/\\_\\\t \\____\\__,_|_|\\___|\\__,_|_|\\__,_|\\__\\___/|_|\n\n\n");
     cout << "Enter your name: ";
     getline(cin >> ws, name);
     cout << "Enter your age: ";
@@ -288,149 +323,219 @@ void iTax::Calculate()
         iTax::eightyAndAbove();
         break;
     default:
-        MessageBox(0, "Please enter a valid number", "Error", 1);
+        // MessageBox(0, "Please enter a valid number", "Error", 1);
+        cout << "Please enter a valid number";
         break;
     }
 }
 
 void iTax::zeroToSixty()
 {
-    if(taxableIncome > 0 && taxableIncome <= 250000)
+    if (taxableIncome > 0 && taxableIncome <= 250000)
         temp = 1;
-    else if(taxableIncome > 250000 && taxableIncome <= 500000)
+    else if (taxableIncome > 250000 && taxableIncome <= 500000)
         temp = 2;
     else if (taxableIncome > 500000 && taxableIncome <= 1000000)
         temp = 3;
-    else if(taxableIncome > 1000000)
+    else if (taxableIncome > 1000000)
         temp = 4;
     else
         cout << "Enter a valid Amount";
-    
-        switch (temp)
-        {
-        case 1:
-            incomeTax = 0;
-            eduCess = 0;
-            highEduCess = 0;
-            taxPayable = incomeTax + eduCess + highEduCess;
-            break;
 
-        case 2:
-            incomeTax = 0.05 * (taxableIncome - 250000);
-            eduCess = 0.02 * incomeTax;
-            highEduCess = 0.01 * incomeTax;
-            taxPayable = incomeTax + eduCess + highEduCess;
-            break;
-        case 3:
-            incomeTax = (0.2 * (taxableIncome - 500000)) + 12500;
-            eduCess = 0.02 * incomeTax;
-            highEduCess = 0.01 * incomeTax;
-            taxPayable = incomeTax + eduCess + highEduCess;
-            break;
-        case 4:
-            incomeTax = (0.3 * (taxableIncome - 1000000)) + 112500;
-            eduCess = 0.02 * incomeTax;
-            highEduCess = 0.01 * incomeTax;
-            taxPayable = incomeTax + eduCess + highEduCess;
-            break;
-        default:
-            break;
-        }
+    switch (temp)
+    {
+    case 1:
+        incomeTax = 0;
+        eduCess = 0;
+        highEduCess = 0;
+        taxPayable = incomeTax + eduCess + highEduCess;
+        break;
 
-    cout << incomeTax << endl << eduCess << endl << highEduCess << endl;
+    case 2:
+        incomeTax = 0.05 * (taxableIncome - 250000);
+        eduCess = 0.02 * incomeTax;
+        highEduCess = 0.01 * incomeTax;
+        taxPayable = incomeTax + eduCess + highEduCess;
+        break;
+    case 3:
+        incomeTax = (0.2 * (taxableIncome - 500000)) + 12500;
+        eduCess = 0.02 * incomeTax;
+        highEduCess = 0.01 * incomeTax;
+        taxPayable = incomeTax + eduCess + highEduCess;
+        break;
+    case 4:
+        incomeTax = (0.3 * (taxableIncome - 1000000)) + 112500;
+        eduCess = 0.02 * incomeTax;
+        highEduCess = 0.01 * incomeTax;
+        taxPayable = incomeTax + eduCess + highEduCess;
+        break;
+    default:
+        break;
+    }
 }
 
 void iTax::sixtyToEighty()
 {
-    if(taxableIncome > 0 && taxableIncome <= 300000)
+    if (taxableIncome > 0 && taxableIncome <= 300000)
         temp = 1;
-    else if(taxableIncome > 300000 && taxableIncome <= 500000)
+    else if (taxableIncome > 300000 && taxableIncome <= 500000)
         temp = 2;
     else if (taxableIncome > 500000 && taxableIncome <= 1000000)
         temp = 3;
-    else if(taxableIncome > 1000000)
+    else if (taxableIncome > 1000000)
         temp = 4;
     else
         cout << "Enter a Valid Number....";
-    
-        switch (temp)
-        {
-        case 1:
-            incomeTax = 0;
-            eduCess = 0;
-            highEduCess = 0;
-            taxPayable = incomeTax + eduCess + highEduCess;
-            break;
 
-        case 2:
-            incomeTax = 0.05 * (taxableIncome - 300000);
-            eduCess = 0.02 * incomeTax;
-            highEduCess = 0.01 * incomeTax;
-            taxPayable = incomeTax + eduCess + highEduCess;
-            break;
-        case 3:
-            incomeTax = (0.2 * (taxableIncome - 500000)) + 10000;
-            eduCess = 0.02 * incomeTax;
-            highEduCess = 0.01 * incomeTax;
-            taxPayable = incomeTax + eduCess + highEduCess;
-            break;
-        case 4:
-            incomeTax = (0.3 * (taxableIncome - 1000000)) + 110000;
-            eduCess = 0.02 * incomeTax;
-            highEduCess = 0.01 * incomeTax;
-            taxPayable = incomeTax + eduCess + highEduCess;
-            break;
-        default:
-            break;
-        }
+    switch (temp)
+    {
+    case 1:
+        incomeTax = 0;
+        eduCess = 0;
+        highEduCess = 0;
+        taxPayable = incomeTax + eduCess + highEduCess;
+        break;
 
-    cout << incomeTax << endl << eduCess << endl << highEduCess << endl;
+    case 2:
+        incomeTax = 0.05 * (taxableIncome - 300000);
+        eduCess = 0.02 * incomeTax;
+        highEduCess = 0.01 * incomeTax;
+        taxPayable = incomeTax + eduCess + highEduCess;
+        break;
+    case 3:
+        incomeTax = (0.2 * (taxableIncome - 500000)) + 10000;
+        eduCess = 0.02 * incomeTax;
+        highEduCess = 0.01 * incomeTax;
+        taxPayable = incomeTax + eduCess + highEduCess;
+        break;
+    case 4:
+        incomeTax = (0.3 * (taxableIncome - 1000000)) + 110000;
+        eduCess = 0.02 * incomeTax;
+        highEduCess = 0.01 * incomeTax;
+        taxPayable = incomeTax + eduCess + highEduCess;
+        break;
+    default:
+        break;
+    }
 }
 
 void iTax::eightyAndAbove()
 {
-    if(taxableIncome > 0 && taxableIncome <= 500000)
+    if (taxableIncome > 0 && taxableIncome <= 500000)
         temp = 1;
-    else if(taxableIncome > 500000 && taxableIncome <= 1000000)
+    else if (taxableIncome > 500000 && taxableIncome <= 1000000)
         temp = 2;
-    else if(taxableIncome > 1000000)
+    else if (taxableIncome > 1000000)
         temp = 4;
     else
         cout << "Enter a Valid Number....";
-    
-        switch (temp)
-        {
-        case 1:
-            incomeTax = 0;
-            eduCess = 0;
-            highEduCess = 0;
-            taxPayable = incomeTax + eduCess + highEduCess;
-            break;
 
-        case 2:
-            incomeTax = 0.2 * (taxableIncome - 500000);
-            eduCess = 0.02 * incomeTax;
-            highEduCess = 0.01 * incomeTax;
-            taxPayable = incomeTax + eduCess + highEduCess;
-            break;
-        case 4:
-            incomeTax = (0.3 * (taxableIncome - 1000000)) + 100000;
-            eduCess = 0.02 * incomeTax;
-            highEduCess = 0.01 * incomeTax;
-            taxPayable = incomeTax + eduCess + highEduCess;
-            break;
-        default:
-            break;
-        }
+    switch (temp)
+    {
+    case 1:
+        incomeTax = 0;
+        eduCess = 0;
+        highEduCess = 0;
+        taxPayable = incomeTax + eduCess + highEduCess;
+        break;
 
-    cout << incomeTax << endl << eduCess << endl << highEduCess << endl;
+    case 2:
+        incomeTax = 0.2 * (taxableIncome - 500000);
+        eduCess = 0.02 * incomeTax;
+        highEduCess = 0.01 * incomeTax;
+        taxPayable = incomeTax + eduCess + highEduCess;
+        break;
+    case 4:
+        incomeTax = (0.3 * (taxableIncome - 1000000)) + 100000;
+        eduCess = 0.02 * incomeTax;
+        highEduCess = 0.01 * incomeTax;
+        taxPayable = incomeTax + eduCess + highEduCess;
+        break;
+    default:
+        break;
+    }
+}
+
+void iTax::showiTax()
+{
+    system("clear");
+    printf(
+        " ___                                  _____          \t  ____      _            _       _\n"
+        "|_ _|_ __   ___ ___  _ __ ___   ___  |_   _|_ ___  __\t / ___|__ _| | ___ _   _| | __ _| |_ ___  _ __\n"
+        " | || '_ \\ / __/ _ \\| '_ ` _ \\ / _ \\   | |/ _` \\ \\/ /\t| |   / _` | |/ __| | | | |/ _` | __/ _ \\| '__|\n"
+        " | || | | | (_| (_) | | | | | |  __/   | | (_| |>  < \t| |__| (_| | | (__| |_| | | (_| | || (_) | |\n"
+        "|___|_| |_|\\___\\___/|_| |_| |_|\\___|   |_|\\__,_/_/\\_\\\t \\____\\__,_|_|\\___|\\__,_|_|\\__,_|\\__\\___/|_|\n\n\n");
+    cout << "=========================================================================\n";
+    cout << "\t\t\tIncome Tax Invoice\n";
+    cout << "=========================================================================\n";
+    cout << "Name of the Payee:\t" << name << endl;
+    cout << "Age:\t\t\t" << age << "yrs" << endl;
+    cout << "Financial Year:\t\t" << year << endl;
+    cout << "=========================================================================\n";
+    cout << "Taxable Income:\t\t\t\t\t\tRs." << taxableIncome << endl;
+    cout << "Income Tax (As per age slot and Taxable Income):\tRs." << incomeTax << endl;
+    cout << "Education Cess (2% of Income Tax):\t\t\tRs." << eduCess << endl;
+    cout << "Higher Education Cess (1% of Income Tax):\t\tRs." << highEduCess << endl;
+    cout << "=========================================================================\n";
+    cout << "Total Income Tax Payable:\t\t\t\tRs." << taxPayable << endl;
+    cout << "=========================================================================\n";
 }
 
 /*INCOME TAX END*/
 
 int main()
 {
-    iTax inctax;
-    inctax.Calculate();
+    GST gst;
+    SI si;
+    CI ci;
+    iTax itax;
+    EMI emi;
+
+mainmenu:
+    system("clear");
+    printf(
+        " _____ _                        _       _ \t  ____      _            _       _\n"
+        "|  ___(_)_ __   __ _ _ __   ___(_) __ _| |\t / ___|__ _| | ___ _   _| | __ _| |_ ___  _ __\n"
+        "| |_  | | '_ \\ / _` | '_ \\ / __| |/ _` | |\t| |   / _` | |/ __| | | | |/ _` | __/ _ \\| '__|\n"
+        "|  _| | | | | | (_| | | | | (__| | (_| | |\t| |__| (_| | | (__| |_| | | (_| | || (_) | |\n"
+        "|_|   |_|_| |_|\\__,_|_| |_|\\___|_|\\__,_|_|\t \\____\\__,_|_|\\___|\\__,_|_|\\__,_|\\__\\___/|_|\n\n\n");
+    int choice;
+    printf(
+        "Choose An Option\n\n"
+        "1.GST Calculator\n\n"
+        "2.Simple Interest Calculator\n\n"
+        "3.Compound Interest Calculator\n\n"
+        "4.Income Tax Calculator\n\n"
+        "5.EMI Interest Calculator\n\n"
+        "Enter your choice: "
+        );
+    scanf("%d", &choice);
+
+    switch (choice)
+    {
+    case 1:
+        gst.getGST();
+        gst.showGST();
+        break;
+    case 2:
+        si.getSI();
+        si.showSI();
+        break;
+    case 3:
+        ci.getCI();
+        ci.showCI();
+        break;
+    case 4:
+        itax.getiTax();
+        itax.showiTax();
+        break;
+    case 5:
+        emi.getEMI();
+        emi.showEMI();
+        break;
+    default:
+        cout << "Enter a Valid Option....!!" << endl;
+        break;
+    }
     return 0;
 }
